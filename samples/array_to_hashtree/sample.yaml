@@ -1,0 +1,16 @@
+---
+- name: Option 1
+  path: network.cidr
+  value: 10.1.2.0/24
+
+- name: Option 2
+  path: spec.info.name
+  value: TheApp
+
+- name: Option 3
+  path: network.security.has_firewall
+  value: false
+
+- name: Option 4
+  path: size.width
+  value: 2000
