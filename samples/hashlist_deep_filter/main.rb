@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 puts 'Select the object in-depth'
 
 require 'yaml'
 
 # SAMPLE_SELECTOR = 'cluster.name,apps.metadata.name,apps.spec.resources.required.mem'.freeze
-SAMPLE_SELECTOR = 'apps.spec'.freeze
+SAMPLE_SELECTOR = 'apps.spec'
 # SAMPLE_SELECTOR = ''
 
 puts "Using '#{SAMPLE_SELECTOR}' selector"
