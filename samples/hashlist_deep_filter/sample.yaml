@@ -1,0 +1,43 @@
+---
+apps:
+  - metadata:
+      id: 1
+      name: some app
+    spec:
+      version: 10
+      resources:
+        required:
+          cpu: 10
+          mem: 10M
+          network:
+            bandwidth: 1M
+            latency: 100m
+        request:
+          cpu: 1
+          mem: 1M
+          network:
+            bandwidth: 1K
+            latency: 1000m
+  - metadata:
+      id: -10
+      name: other app
+    spec:
+      version: 7
+      resources:
+        required:
+          cpu: 5
+          network:
+            bandwidth: 1M
+            latency: 100m
+        request:
+          cpu: 1
+          mem: 1M
+          network:
+            latency: 1000m
+cluster:
+  name: main
+  nodes: 10
+  node spec:
+    cpu: 100
+    memory: 100G
+    disk: 1T
