@@ -10,7 +10,7 @@ options = {
 OptionParser.new { |opts|
   opts.banner = <<~EOD
     OptParse examples.
-    Usage: #{$0} [args]
+    Usage: #{$PROGRAM_NAME} [args]
     0. This message is a nice multi-line help.
     1. Boolean flag parsing
       Source: https://stackoverflow.com/questions/54576873/ruby-optionparser-short-code-for-boolean-option
@@ -28,4 +28,4 @@ OptionParser.new { |opts|
 
 pp options
 
-puts "Run #{$0} --help to see hints" if ARGV.size == 0
+puts "Run #{$PROGRAM_NAME} --help to see hints" if ARGV.empty?

@@ -1,1 +1,1 @@
-`rubocop -Ac ./.rubocop.yaml .` - format code in this folder
+`rubocop -Ac ./.rubocop.yml .` - format code in this folder
