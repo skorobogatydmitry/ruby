@@ -4,14 +4,14 @@ require 'json'
 require 'logger'
 
 LOGGER = Logger.new $stderr
-BASE_DIR = File.expand_path "#{File.dirname(__FILE__)}/.."
+BASE_DIR = File.expand_path "#{File.dirname(__FILE__)}/." # a top project's directory
 
 LOGGER.formatter = lambda { |severity, datetime, _progname, msg|
-  current_file = caller_locations.delete_if { |e| e.path.end_with? File.basename __FILE__ }.first
+  current_file = caller_locations.keep_if { |e| File.expand_path(e.path).include? BASE_DIR }.first
   JSON.dump(
     {
       severity: severity,
-      path: current_file.path.delete_prefix(BASE_DIR),
+      path: File.expand_path(current_file.path).delete_prefix("#{BASE_DIR}/"),
       line: current_file.lineno,
       label: current_file.base_label,
       timestamp: datetime,
