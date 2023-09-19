@@ -16,7 +16,7 @@ puts "Using '#{SAMPLE_SELECTOR}' selector"
 def deep_select data, selectors
   selectors_tree = {}
   selectors&.split(',')&.each { |selector|
-    selector&.split('.')&.inject(selectors_tree) { |res, field| res[field] ||= {} }
+    selector.split('.').inject(selectors_tree) { |res, field| res[field] ||= {} }
   }
   dive_in_selection data, selectors_tree
 end
@@ -26,7 +26,7 @@ end
 # selector - nested tree-like hash where each vertex is a selector
 #   on a depth as by its position in the tree
 def dive_in_selection obj, selector
-  return obj if obj.nil? || selector.empty? # stop non-existent selectors
+  return obj if selector.empty? # stop on empty selector or data
 
   case obj
   when Hash
@@ -34,17 +34,12 @@ def dive_in_selection obj, selector
       [k, dive_in_selection(obj[k], v)]
     }.to_h
   when Array
-    obj.collect { |e|
-      raise "Non-hash elements in array are not supported, got #{e.class}" unless e.is_a? Hash
-
-      selector.collect { |k, v| [k, dive_in_selection(e[k], v)] }.to_h
-    }
+    obj.collect { |e| dive_in_selection e, selector }
   else
     obj
   end
 end
 
 source_data = YAML.safe_load File.read File.join(File.dirname(__FILE__), 'sample.yaml')
-
 puts 'Result:'
 puts YAML.dump deep_select source_data, SAMPLE_SELECTOR

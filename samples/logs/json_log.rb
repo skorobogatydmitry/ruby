@@ -8,6 +8,7 @@ BASE_DIR = File.expand_path "#{File.dirname(__FILE__)}/." # a top project's dire
 
 LOGGER.formatter = lambda { |severity, datetime, _progname, msg|
   current_file = caller_locations.keep_if { |e| File.expand_path(e.path).include? BASE_DIR }.first
+  # rubocop:disable Style/StringConcatenation
   JSON.dump(
     {
       severity: severity,
@@ -18,6 +19,7 @@ LOGGER.formatter = lambda { |severity, datetime, _progname, msg|
       message: msg
     }
   ) + "\n"
+  # rubocop:enable Style/StringConcatenation
 }
 
 if File.expand_path(__FILE__).eql? File.expand_path($PROGRAM_NAME)
