@@ -12,3 +12,9 @@ Style/MethodDefParentheses:
 
 Style/MethodCallWithArgsParentheses:
   EnforcedStyle: omit_parentheses
+
+Style/NestedParenthesizedCalls:
+  Enabled: false
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false
