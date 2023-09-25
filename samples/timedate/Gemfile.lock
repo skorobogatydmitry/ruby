@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (7.0.8)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    activesupport-core-ext (4.0.0.3)
+    concurrent-ruby (1.2.2)
+    i18n (1.14.1)
+      concurrent-ruby (~> 1.0)
+    minitest (5.20.0)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+
+PLATFORMS
+  x86_64-darwin-21
+
+DEPENDENCIES
+  activesupport
+  activesupport-core-ext
+
+BUNDLED WITH
+   2.4.12
